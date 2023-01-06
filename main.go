@@ -68,5 +68,7 @@ func main() {
 
 	mux.HandleFunc("/say", sayHandler)
 
-	log.Fatal("HTTP server error: ", http.ListenAndServe("localhost:3000", mux))
+	if err := http.ListenAndServe("localhost:3000", mux); err != nil {
+		log.Fatalf("HTTP server error: %v\n", err)
+	}
 }
